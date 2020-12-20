@@ -3,7 +3,7 @@ const controller = require('../controllers/tasks.controller')
 module.exports = function(app) {
     app.use(function(req, res, next) {
 
-      res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
+      res.setHeader('Access-Control-Allow-Origin','https://5fdf45b35687bd6238ef3108--taskpro.netlify.app');
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
       res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
       res.setHeader('Access-Control-Allow-Credentials', true);
