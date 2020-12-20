@@ -4,7 +4,7 @@ const cors = require('cors')
 var app = express()
 
 var corOptions = {
-    origin:'http://localhost:3000'
+    origin: true
 }
 app.use(cors(corOptions))
 app.use(bodyParser.json())
