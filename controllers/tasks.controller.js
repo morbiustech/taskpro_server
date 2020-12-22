@@ -1,6 +1,8 @@
 const db = require('../models')
 const Tasks = db.tasks
+const user =  db.users
 const Op = db.Sequelize.Op
+const newTaskMail  = require('../emails/newTaskMail')
 
 // create and save
 exports.create = (req,res) =>{
@@ -27,11 +29,25 @@ exports.create = (req,res) =>{
         user_id: req.body.user_id
     }
 
+    const name = req.body.name
+    const email = req.body.email
+    const title = req.body.title
+    const description = req.body.description
+    const subject = 'Task.Pro - You have a new Task!'
+
     // save tutorial 
     Tasks.create(task)
     .then(data => {
 
         res.send(data)
+        newTaskMail(name,email,title,description,subject, function(err, data) {
+            if (err) {
+                console.log('ERROR: ', err);
+                return res.status(500).json({ message: err.message || 'Internal Error' });
+            }
+            console.log('Email sent!!!');
+            return res.json({ message: 'Email sent!!!!!' });
+        });
 
     })
     .catch(err => {

@@ -45,8 +45,8 @@ isIdUnique(id).then(isUnique => {
             res.send(data)
             const name = user_data.name
             const email = user_data.email
-            const subject = 'Welcome to Morbius Messenger Pro'
-            const text = 'Send messeges to your friends'
+            const subject = 'Welcome to Task.Pro'
+            const text = 'Send Tasks and messeges to your friends'
             sendWelcomeMail(name,email, subject, text, function(err, data) {
                 if (err) {
                     console.log('ERROR: ', err);
