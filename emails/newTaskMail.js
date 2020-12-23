@@ -17,13 +17,14 @@ console.log(auth)
 const transporter = nodemailer.createTransport(mailGun(auth));
 
 // step 4 : 
-const newTaskMail = async(name,email,title,description,subject, text,cb) => {
+const newTaskMail = async(name,email,title,status,description,subject, text,cb) => {
 
     const contextObject = {
         type: 'Task Pro Notifications',
         name:name,
         title:title,
-        desciption: description,
+        description: description,
+        status: status
       };
     const mailOptions = {
         from: process.env.EMAIL, // TODO replace this with your own email

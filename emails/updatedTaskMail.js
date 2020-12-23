@@ -17,19 +17,21 @@ console.log(auth)
 const transporter = nodemailer.createTransport(mailGun(auth));
 
 // step 4 : 
-const updatedTaskMail = async(name,email, subject, text,cb) => {
+const updatedTaskMail = async(name,email,title,status,description,subject, text,cb) => {
 
     const contextObject = {
         type: 'Task Pro Notifications',
         name:name,
-        email: email,
+        title:title,
+        description: description,
+        status: status
       };
     const mailOptions = {
         from: process.env.EMAIL, // TODO replace this with your own email
         to: email, // TODO: the receiver email has to be authorized for the free tier
         subject,
         template: {
-            name: 'welcome.hbs',
+            name: 'updatedTask.hbs',
             engine: 'handlebars',
             context: contextObject
           }
